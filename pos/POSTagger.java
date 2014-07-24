@@ -9,13 +9,13 @@ import java.util.*;
  *
  */
 public class POSTagger {
-	ArrayList<String[]> corpusWords;							// Store array of words from corpus
-	ArrayList<String[]> corpusTags;								// Store array of tags from corpus
+	ArrayList<String[]> corpusWords;                            // Store array of words from corpus
+	ArrayList<String[]> corpusTags;                             // Store array of tags from corpus
 	
-	HashMap<String, HashMap<String, Double>> emissions;			// Emission probabilities
-	HashMap<String, HashMap<String, Double>> transitions;		// Transition probabilities
+	HashMap<String, HashMap<String, Double>> emissions;	        // Emission probabilities
+	HashMap<String, HashMap<String, Double>> transitions;       // Transition probabilities
 	
-	static final Double UNKNOWN_VALUE = -200.0;					// Constant for unobserved word
+	static final Double UNKNOWN_VALUE = -200.0;	                // Constant for unobserved word
 	
 	public POSTagger() {
 		// Initialize instance variables
@@ -37,7 +37,7 @@ public class POSTagger {
 		
 		// Parse the word file
 		try {
-			String wordLine;	// Line we're reading in
+			String wordLine;    // Line we're reading in
 			while ((wordLine = wordsIn.readLine()) != null) {
 				// Convert all characters to lower case
 				String lowerCaseLine = wordLine.toLowerCase();
@@ -53,7 +53,7 @@ public class POSTagger {
 		}
 		// Parse the tag file
 		try {
-			String tagLine;		// Line we're reading in
+			String tagLine;    // Line we're reading in
 			while ((tagLine = tagsIn.readLine()) != null) {
 				// Split the line based on spaces
 				String[] splitTagLine = tagLine.split(" ");
@@ -208,7 +208,7 @@ public class POSTagger {
 	 * @return ArrayList of tags
 	 */
 	public ArrayList<String> tag(String input) {
-		Double emissionsValue;				// What is the value of the word in emissions?
+		Double emissionsValue;    // What is the value of the word in emissions?
 		
 		// Map to keep track of possible states
 		ArrayList<Map<String, String>> backTrace = new ArrayList<Map<String, String>>();
@@ -305,8 +305,8 @@ public class POSTagger {
 	 */
 	public void tagInput() {
 		// Take input in the console from user
-		String sentence = " ";							// Input sentence
-		Scanner input = new Scanner(System.in);			// Get user input
+		String sentence = " ";                          // Input sentence
+		Scanner input = new Scanner(System.in);         // Get user input
 		
 		// Tell user how to quit
 		System.out.print("To quit the program, type return in answer to a "
@@ -366,8 +366,8 @@ public class POSTagger {
 		// Train based on the words and tags to train
 		train(wordsToTrain, tagsToTrain, wordsToTrain.size());
 		
-		Double matchingTags = 0.0;		// number of tags that match
-		Double totalTags = 0.0;			// number of tags we've seen
+		Double matchingTags = 0.0;    // number of tags that match
+		Double totalTags = 0.0;	      // number of tags we've seen
 		
 		// Tag based on model we just trained
 		for (int i = 0; i < wordsToTest.size(); i++) {
