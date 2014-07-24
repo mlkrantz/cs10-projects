@@ -11,12 +11,12 @@ import java.util.*;
 public class POSTagger {
 	ArrayList<String[]> corpusWords;                            // Store array of words from corpus
 	ArrayList<String[]> corpusTags;                             // Store array of tags from corpus
-	
-	HashMap<String, HashMap<String, Double>> emissions;	        // Emission probabilities
+    
+	HashMap<String, HashMap<String, Double>> emissions;         // Emission probabilities
 	HashMap<String, HashMap<String, Double>> transitions;       // Transition probabilities
 	
-	static final Double UNKNOWN_VALUE = -200.0;	                // Constant for unobserved word
-	
+	static final Double UNKNOWN_VALUE = -200.0;                 // Constant for unobserved word
+    
 	public POSTagger() {
 		// Initialize instance variables
 		corpusWords = new ArrayList<String[]>();

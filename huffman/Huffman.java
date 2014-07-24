@@ -12,23 +12,23 @@ import javax.swing.*;
  *
  */
 public class Huffman {
-	private Map<Character, Integer> frequencyTable; 			// Map to store character frequencies
-	private String pathName;									// Name of the input file
+	private Map<Character, Integer> frequencyTable;             // Map to store character frequencies
+	private String pathName;                                    // Name of the input file
 	
-	private PriorityQueue<BinaryTree<CharCount>> treeQueue;		// PQ of CharCount trees
-	private BinaryTree<CharCount> singleTree;					// One tree of all values
+	private PriorityQueue<BinaryTree<CharCount>> treeQueue;     // PQ of CharCount trees
+	private BinaryTree<CharCount> singleTree;                   // One tree of all values
 	
-	private Map<Character, String> codeMap;						// Map to store code sequences
+	private Map<Character, String> codeMap;                     // Map to store code sequences
 	
-	private String compressedPathName;							// Name of the compressed file
-	private String decompressedPathName;						// Name of the decompressed file
+	private String compressedPathName;                          // Name of the compressed file
+	private String decompressedPathName;                        // Name of the decompressed file
 	
 	public Huffman(String pathName) {
 		// Initialize the frequency table
 		frequencyTable = new HashMap<Character, Integer>();
 		// Initialize the code map
 		codeMap = new HashMap<Character, String>();
-		this.pathName = pathName;	// Input file
+		this.pathName = pathName;    // Input file
 	}
 	
 	
@@ -38,7 +38,7 @@ public class Huffman {
 	  * @return path name of the file chosen	
 	  */
 	 public static String getFilePath() {
-		 JFileChooser fc = new JFileChooser(".");   // start at current directory
+		 JFileChooser fc = new JFileChooser(".");    // start at current directory
 		 int returnVal = fc.showOpenDialog(null);
 		 if(returnVal == JFileChooser.APPROVE_OPTION) {
 			 File file = fc.getSelectedFile();
@@ -60,7 +60,7 @@ public class Huffman {
 		BufferedReader input = new BufferedReader(new FileReader(pathName));
 		try {
 			// Look through file character by character
-			int c;	// To store character
+			int c;    // To store character
 			while ((c = input.read()) != -1) {
 				// Character being read
 				char ch = (char) c;
@@ -185,7 +185,7 @@ public class Huffman {
 		// Repeatedly read next character in text file
 		BufferedReader input = new BufferedReader(new FileReader(pathName));
 		try {
-			int c;	// To store character
+			int c;    // To store character
 			while ((c = input.read()) != -1) {
 				// Character being read
 				char ch = (char) c;
@@ -222,7 +222,7 @@ public class Huffman {
 		// BitReader to read bits from the compressed file
 		BufferedBitReader bitInput = new BufferedBitReader(compressedPathName);
 		try {
-			int b;	// Value of bit being read
+			int b;    // Value of bit being read
 			// Tree to allow retrieval
 			BinaryTree<CharCount> tree = singleTree;
 			// Read compressed file bit by bit
